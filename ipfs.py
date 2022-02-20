@@ -11,3 +11,7 @@ def addfile(filename: str):
 def getfile(hash: str):
     res = client.get(hash)
     return res
+
+def showfile(hash:str):
+    res = client.cat(hash)
+    return res
