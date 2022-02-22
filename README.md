@@ -1,4 +1,5 @@
 # IPFS-REST-API
+![picture alt](https://i.pinimg.com/originals/e9/e3/13/e9e313b798bd29d5223e9e379cb52e80.png "IPFS logo")
 
 This is a RESTful API interface for interacting with the IPFS network from any language with ease. Simply deploy the server running the IPFS daemon on either your local machine or one in the cloud and start making HTTP requests with any language for easy use. The current API supports the ability to:
 
