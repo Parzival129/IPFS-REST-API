@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Depends
 from . import models
-from .ipfs import addfile, getfile, showfile
+from .ipfs import addfile, getfile, showfile, linksfile, filecmd
 from .database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
@@ -50,7 +50,7 @@ async def download_file(hash: str, db: Session = Depends(get_db)):
     return {"Hash": hash}
 
 @app.get("/showfile")
-async def preview_file(hash: str, db: Session = Depends(get_db)):
+def preview_file(hash: str, db: Session = Depends(get_db)):
 
     print (f"Fetching file of hash: {hash}")
     content = showfile(hash)
@@ -58,3 +58,22 @@ async def preview_file(hash: str, db: Session = Depends(get_db)):
     Add_to_db(db, res, 'CAT')
 
     return {"Content": content}
+
+@app.get("/linksfile")
+def file_links(hash: str, db: Session = Depends(get_db)):
+
+    print(f"Fetching links for file of hash: {hash}")
+    res = linksfile(hash)
+    Add_to_db(db, None, 'LINK', hashid=hash)
+
+    return res
+
+@app.get("/filecmd")
+def MFS_command(command: str, path: str = None, data: str = None, option: bool = False, db: Session = Depends(get_db)):
+
+    res = filecmd(command, [path, data, option])
+    Add_to_db(db, None, command.upper(), hashid='N/A')
+
+    return res
+
+
