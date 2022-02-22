@@ -15,5 +15,5 @@ This is a RESTful API interface for interacting with the IPFS network from any l
     * mkdir
     * mv
     * cp
-
-Easy creation of private IPFS networks and full MFS command args is in the works, more information on the Inter-Planetary-File-System can be found here: [https://docs.ipfs.io/](https://docs.ipfs.io/ "https://docs.ipfs.io/")
+  
+All requests through the server are recorded on an SQL database for easy logging and monitoring of the API and a node on the network. Easy creation of private IPFS networks and full MFS command args is in the works, more information on the Inter-Planetary-File-System can be found here: [https://docs.ipfs.io/](https://docs.ipfs.io/ "https://docs.ipfs.io/")
